@@ -5,6 +5,8 @@ import AWS6.APITest.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor        //의존성 자동 인식
 public class MemberService {
@@ -12,7 +14,11 @@ public class MemberService {
     private final MemberRepository memberRepository;
 
     public Member createMember(Member member){
-        Member member1 = memberRepository.save(member);
-        return member1;
+        return memberRepository.save(member);
     }
+
+    public List<Member> getAllMembers() {
+        return memberRepository.findAll();
+    }
+
 }
